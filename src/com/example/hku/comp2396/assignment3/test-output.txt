@@ -1,0 +1,29 @@
+Inserted a $10 coin. $10 in Total.
+Inserted a $2 coin. $12 in Total.
+Rejected $2, $10. $12 in Total.
+
+Rejected no coin!
+
+Inserted a $5 coin. $5 in Total.
+Purchasing Pepsi... Success! Paid $5. No change.
+
+Inserted a $10 coin. $10 in Total.
+Inserted a $5 coin. $15 in Total.
+Purchasing Pepsi... Success! Paid $15. Change: $1, $2, $2, $5.
+
+Inserted a $5 coin. $5 in Total.
+Inserted a $2 coin. $7 in Total.
+Purchasing Pepsi... Insufficient change!
+
+Rejected $2, $5. $7 in Total.
+
+Inserted a $2 coin. $2 in Total.
+Purchasing Pepsi... Insufficient amount! Inserted $2 but needs $5.
+
+Inserted a $2 coin. $4 in Total.
+Purchasing Cocacola... Success! Paid $4. No change.
+
+Inserted a $2 coin. $2 in Total.
+Inserted a $2 coin. $4 in Total.
+Purchasing Cocacola... Out of stock!
+Rejected $2, $2. $4 in Total.
