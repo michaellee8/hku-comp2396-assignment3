@@ -16,7 +16,8 @@ public class CoinPack implements Cloneable {
   }
 
   // clone() provides a copy of the CoinPack that can be safely modified
-  public CoinPack clone() {
+  @SuppressWarnings("unchecked")
+  public CoinPack clone() throws CloneNotSupportedException {
     CoinPack pack = (CoinPack) super.clone();
     pack.coins = (HashMap<Integer, Integer>) coins.clone();
     return pack;
@@ -63,7 +64,8 @@ public class CoinPack implements Cloneable {
     }
   }
 
-  public CoinPack cloneAndAddCoin(Integer i) throws InvalidOperationException {
+  public CoinPack cloneAndAddCoin(Integer i)
+      throws InvalidOperationException, CloneNotSupportedException {
     var pack = this.clone();
     if (!pack.addCoin(i)) {
       throw new InvalidOperationException();
@@ -71,7 +73,8 @@ public class CoinPack implements Cloneable {
     return pack;
   }
 
-  public CoinPack cloneAndRemoveCoin(Integer i) throws InvalidOperationException {
+  public CoinPack cloneAndRemoveCoin(Integer i)
+      throws InvalidOperationException, CloneNotSupportedException {
     var pack = this.clone();
     if (!pack.removeCoin(i)) {
       throw new InvalidOperationException();
@@ -79,7 +82,7 @@ public class CoinPack implements Cloneable {
     return pack;
   }
 
-  public CoinPack cloneAndAddAll(CoinPack cp) {
+  public CoinPack cloneAndAddAll(CoinPack cp) throws CloneNotSupportedException {
     var pack = this.clone();
     pack.addAll(cp);
     return pack;
@@ -95,7 +98,8 @@ public class CoinPack implements Cloneable {
     return coins.isEmpty();
   }
 
-  public static CoinPack attemptAmount(CoinPack cp, Integer amt) throws InvalidOperationException {
+  public static CoinPack attemptAmount(CoinPack cp, Integer amt)
+      throws InvalidOperationException, CloneNotSupportedException {
 
     // No more coins
     if (cp.isEmpty()) {
