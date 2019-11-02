@@ -1,6 +1,7 @@
 package com.example.hku.comp2396.assignment3;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +14,22 @@ public class CoinPack implements Cloneable {
 
   public CoinPack() {
     coins = new HashMap<Integer, Integer>();
+  }
+
+  public String getCoinListString() {
+    return this.getCoinList().stream().map(n -> "$" + n.toString())
+        .collect(Collectors.joining(", "));
+  }
+
+  public List<Integer> getCoinList() {
+    var list = this.getAvailableCoinTypes().stream().map(i ->
+        Collections.nCopies(this.getCoinCountOfType(i), i))
+        .reduce(new ArrayList<Integer>(), (integers, integers2) -> {
+          integers.addAll(integers2);
+          return integers;
+        });
+    Collections.reverse(list);
+    return list;
   }
 
   // clone() provides a copy of the CoinPack that can be safely modified
@@ -61,6 +78,17 @@ public class CoinPack implements Cloneable {
   public void addAll(CoinPack cp) {
     for (var entry : cp.coins.entrySet()) {
       coins.put(entry.getKey(), coins.getOrDefault(entry.getKey(), 0) + entry.getValue());
+    }
+  }
+
+  public void removeAll(CoinPack cp) throws InvalidOperationException {
+    for (var i : cp.getAvailableCoinTypes()) {
+      for (int j = 0; j < cp.getCoinCountOfType(i); j++) {
+        var success = this.removeCoin(i);
+        if (!success) {
+          throw new InvalidOperationException();
+        }
+      }
     }
   }
 
@@ -131,6 +159,10 @@ public class CoinPack implements Cloneable {
 
     return null;
 
+  }
+
+  public void reset() {
+    coins = new HashMap<>();
   }
 
 }

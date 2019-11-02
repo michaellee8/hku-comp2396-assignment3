@@ -2,14 +2,14 @@ package com.example.hku.comp2396.assignment3;
 
 public class SoftDrinkSlot {
 
-	private String name;
-	private int price;
-	private int quantity;
+  public String name;
+  public int price;
+  public int quantity;
 
-	public SoftDrinkSlot(String name, int price, int quantity) {
-		this.name = name;
-		this.price = price;
-		this.quantity = quantity;
-	}
-	/* You may add other non-static properties and methods */
+  public SoftDrinkSlot(String name, int price, int quantity) {
+    this.name = name;
+    this.price = price;
+    this.quantity = quantity;
+  }
+  /* You may add other non-static properties and methods */
 }
